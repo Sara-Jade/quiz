@@ -30,3 +30,4 @@ C:\Users\wisco\source\repos\quiz\quiz-backend\quiz-backend\obj\Debug\net8.0\refi
 C:\Users\wisco\source\repos\quiz\quiz-backend\quiz-backend\obj\Debug\net8.0\quiz-backend.pdb
 C:\Users\wisco\source\repos\quiz\quiz-backend\quiz-backend\obj\Debug\net8.0\quiz-backend.genruntimeconfig.cache
 C:\Users\wisco\source\repos\quiz\quiz-backend\quiz-backend\obj\Debug\net8.0\ref\quiz-backend.dll
+C:\Users\wisco\source\repos\quiz\quiz-backend\quiz-backend\obj\Debug\net8.0\quiz-backend.sourcelink.json

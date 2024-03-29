@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using quiz_backend.Models;
 
 namespace quiz_backend.Controllers
 {
@@ -8,9 +9,19 @@ namespace quiz_backend.Controllers
     public class QuestionsController : ControllerBase
     {
         [HttpPost]
-        public string Post([FromBody]string value)
+        public void Post([FromBody]Question question)
         {
-            return "Pong";
+            
+        }
+
+        [HttpGet]
+        public IEnumerable<Question> Get()
+        {
+            return
+            [
+                new Question("Ping?"),
+                new Question("Pong?"),
+            ];
         }
     }
 }
