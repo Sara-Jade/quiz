@@ -9,6 +9,18 @@
         <mat-label>Correct Answer</mat-label>
         <input [(ngModel)]="question.CorrectAnswer" name="CorrectAnswer" matInput>
       </mat-form-field>
+      <mat-form-field class="fullWidth">
+        <mat-label>Wrong Answer</mat-label>
+        <input [(ngModel)]="question.WrongAnswers[0]" name="Wrong Answer" matInput>
+      </mat-form-field>
+      <mat-form-field class="fullWidth">
+        <mat-label>Wrong Answer</mat-label>
+        <input [(ngModel)]="question.WrongAnswers[1]" name="Wrong Answer" matInput>
+      </mat-form-field>
+      <mat-form-field class="fullWidth">
+        <mat-label>Wrong Answer</mat-label>
+        <input [(ngModel)]="question.WrongAnswers[2]" name="Wrong Answer" matInput>
+      </mat-form-field>
     </form>
   </mat-card-content>
   <mat-card-actions>
