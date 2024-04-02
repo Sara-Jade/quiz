@@ -15,7 +15,7 @@ import { MatCardModule} from '@angular/material/card';
 })
 
 export class QuestionComponent { 
-    question = { Text: ''};
+    question = { Text: '', CorrectAnswer: ''}
     
     constructor(private apiService: ApiService) { }
 
