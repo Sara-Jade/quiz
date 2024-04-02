@@ -1,12 +1,13 @@
-<mat-form-field>
-  <mat-label>What is your name?</mat-label>
-  <input matInput>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>What is your quest?</mat-label>
-  <input matInput>
-</mat-form-field>
-<mat-form-field>
-  <mat-label>What is your favorite color?</mat-label>
-  <input matInput>
-</mat-form-field>
+<mat-card>
+  <mat-card-content>
+    <form>
+      <mat-form-field>
+        <mat-label>What is your question?</mat-label>
+        <input [(ngModel)]="question" name="question" matInput>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="post(question)" mat-button>Post</button>
+  </mat-card-actions>
+</mat-card>
