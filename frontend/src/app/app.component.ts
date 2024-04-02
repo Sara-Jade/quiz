@@ -5,9 +5,8 @@ import { QuestionComponent } from './question.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [RouterOutlet, QuestionComponent],
+  template: '<question></question>',
 })
 export class AppComponent {
   title = 'frontending';

@@ -8,20 +8,27 @@ namespace quiz_backend.Controllers
     [ApiController]
     public class QuestionsController : ControllerBase
     {
+        readonly QuizContext context;
+        public QuestionsController(QuizContext context)
+        {
+            this.context = context;
+        }
+
         [HttpPost]
         public void Post([FromBody]Question question)
         {
-            
+            context.Questions.Add(question);
+            context.SaveChanges();
         }
 
         [HttpGet]
         public IEnumerable<Question> Get()
         {
-            return
-            [
-                new Question("Ping?"),
-                new Question("Pong?"),
-            ];
+            return context.Questions;
+            //[
+            //    new Question("Ping?"),
+            //    new Question("Pong?"),
+            //];
         }
     }
 }

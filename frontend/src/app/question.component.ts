@@ -1,10 +1,12 @@
 import { Component } from "@angular/core";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
     selector: 'question',
-    template: 'This is our question'
+    standalone: true,
+    imports: [MatFormFieldModule, MatInputModule],
+    templateUrl: './question.component.html',
 })
 
-export class QuestionComponent {
-
-}
+export class QuestionComponent { }
