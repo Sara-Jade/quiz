@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using quiz_backend.Models;
 
 namespace quiz_backend.Controllers
@@ -25,10 +24,6 @@ namespace quiz_backend.Controllers
         public IEnumerable<Question> Get()
         {
             return context.Questions;
-            //[
-            //    new Question("Ping?"),
-            //    new Question("Pong?"),
-            //];
         }
     }
 }

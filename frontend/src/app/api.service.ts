@@ -7,8 +7,12 @@ export class ApiService {
         this.http = http;
     }
 
+    getQuestionSet() {
+        return this.http.get('http://localhost:5167/api/Questions');
+    }
+
     postQuestion(question: any) {
-        return this.http.post('http://localhost:5167/api/Questions', question)
+        this.http.post('http://localhost:5167/api/Questions', question)
             .subscribe(response => { console.log(response); });
     }
 }
