@@ -3,6 +3,7 @@ import { Component } from "@angular/core";
 import { MatCardModule } from "@angular/material/card";
 import { MatListModule } from "@angular/material/list";
 import { NgFor } from "@angular/common";
+import { QuestionComponent } from "./question.component";
 
 
 @Component({
@@ -19,14 +20,14 @@ export class QuestionSetComponent {
         CorrectAnswer: '',
         WrongAnswers: ['', '', '']}
 
-    questions: any;
+    questions: Array<any> = [];
     
     constructor(private apiService: ApiService) { }
 
     ngOnInit() {
         console.log('QuestionSetComponent initialized');
         this.apiService.getQuestionSet()
-            .subscribe((response: object) => { this.questions = response; });
+            .subscribe((response: any) => { this.questions = [...response]; });
     }
 
     post(question: any): void { 
