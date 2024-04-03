@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using quiz_backend.Models;
 
 namespace quiz_backend.Controllers
@@ -14,10 +15,21 @@ namespace quiz_backend.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody]Question question)
+        public async Task<OkObjectResult> Post([FromBody]Question question)
         {
             context.Questions.Add(question);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
+            return Ok(question);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody]Question question)
+        {
+            if (id != question.Id) { return BadRequest("Id parameter must match question id"); }
+
+            context.Entry(question).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+            return Ok(question);
         }
 
         [HttpGet]

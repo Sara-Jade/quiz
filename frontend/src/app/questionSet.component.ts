@@ -32,6 +32,6 @@ export class QuestionSetComponent {
 
     post(question: any): void { 
         this.apiService.postQuestion(question);
-        console.log('Question: ' + question.Text);
+        console.log(`Question: ${question.Text}`);
     }
 }
