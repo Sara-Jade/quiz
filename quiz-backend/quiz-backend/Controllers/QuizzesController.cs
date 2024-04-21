@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using quiz_backend.Models;
+using System.Reflection.Metadata.Ecma335;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,12 +16,18 @@ namespace quiz_backend.Controllers
             this.context = context;
         }
 
+        [HttpGet]
+        public IEnumerable<Quiz> Get()
+        {
+            return context.Quizzes;
+        }
+
         // POST api/<QuizzesController>
         [HttpPost]
-        public IActionResult Post([FromBody] Quiz quiz)
+        public async Task<IActionResult> Post([FromBody] Quiz quiz)
         {
             context.Quizzes.Add(quiz);
-            context.SaveChangesAsync();
+            await context.SaveChangesAsync();
             return Ok(quiz);
         }
 
