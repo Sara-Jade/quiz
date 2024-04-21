@@ -19,7 +19,8 @@ namespace quiz_backend.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Quiz quiz)
         {
-            context.Add(quiz);
+            context.Quizzes.Add(quiz);
+            context.SaveChangesAsync();
             return Ok(quiz);
         }
 
