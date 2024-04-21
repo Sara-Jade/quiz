@@ -3,3 +3,11 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .fullWidth { width: 100%; }
+/* .background { background-color: lightyellow; } */
+/*span { color: blue !important; cursor: pointer; text-decoration: underline;}*/
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+  }

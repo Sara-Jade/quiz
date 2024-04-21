@@ -1,25 +1,29 @@
 <mat-card>
+  <mat-card-header>Question</mat-card-header>
   <mat-card-content>
     <form>
       <mat-form-field class="fullWidth">
         <mat-label>Question</mat-label>
-        <input [(ngModel)]="question.Text" name="question" matInput>
+        <!-- <input [(ngModel)]="question.text" name="Question" matInput> -->
+        <!-- <input matInput [value]="selectedQuestion.text"> -->
+        <!-- <input [(ngModel)]="selectedQuestion.text" name="Question" matInput> -->
+        <input [(ngModel)]="question.text" name="Question" matInput>
       </mat-form-field>
       <mat-form-field class="fullWidth">
         <mat-label>Correct Answer</mat-label>
-        <input [(ngModel)]="question.CorrectAnswer" name="CorrectAnswer" matInput>
+        <input [(ngModel)]="question.correctAnswer" name="CorrectAnswer" matInput>
       </mat-form-field>
       <mat-form-field class="fullWidth">
         <mat-label>Wrong Answer</mat-label>
-        <input [(ngModel)]="question.WrongAnswers[0]" name="Wrong Answer" matInput>
+        <input [(ngModel)]="question.wrongAnswers[0]" name="Wrong Answer" matInput>
       </mat-form-field>
       <mat-form-field class="fullWidth">
         <mat-label>Wrong Answer</mat-label>
-        <input [(ngModel)]="question.WrongAnswers[1]" name="Wrong Answer" matInput>
+        <input [(ngModel)]="question.wrongAnswers[1]" name="Wrong Answer" matInput>
       </mat-form-field>
       <mat-form-field class="fullWidth">
         <mat-label>Wrong Answer</mat-label>
-        <input [(ngModel)]="question.WrongAnswers[2]" name="Wrong Answer" matInput>
+        <input [(ngModel)]="question.wrongAnswers[2]" name="Wrong Answer" matInput>
       </mat-form-field>
     </form>
   </mat-card-content>

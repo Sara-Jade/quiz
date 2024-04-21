@@ -1,11 +1,38 @@
-<mat-card>
+<!-- <mat-card>
   <mat-card-content>
-    <mat-list role="list" *ngFor="let question of questions">
-      <mat-list-item role="listitem">{{question.text}}</mat-list-item>
+    <mat-list class="background" role="list">
+      <mat-list-item (click)="api.selectQuestion(question)" role="listitem" *ngFor="let question of questions">{{question.text}}</mat-list-item>
     </mat-list>
   </mat-card-content>
   <mat-card-actions>
 
   </mat-card-actions>
+</mat-card> -->
+
+<!-- <mat-selection-list #questionSet role="listbox">
+  @for (question of questions; track question) {
+    <mat-list-option role="listitem">{{question.text}}</mat-list-option>
+  }
+</mat-selection-list> -->
+
+<!-- <p>
+  Options selected: {{questions.selectedOptions.selected.length}}
+</p> -->
+<mat-card>
+  <mat-card-content>
+    <label>Question List</label>
+    <mat-radio-group 
+      (change)="onOptionChange($event)"
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [(ngModel)]="selectedQuestion">
+      @for (question of questions; track question) {
+        <!-- <mat-radio-button (click)="api.selectQuestion(question)" class="example-radio-button" [value]="question">{{question.text}}</mat-radio-button> -->
+        <mat-radio-button class="example-radio-button" [value]="question">{{question.text}}</mat-radio-button>
+        <!-- <mat-radio-button class="example-radio-button" value="question">{{question.text}}</mat-radio-button> -->
+      }
+    </mat-radio-group>
+    <div>Your selected question is: {{selectedQuestion.text}}</div>
+  </mat-card-content>
 </mat-card>
   

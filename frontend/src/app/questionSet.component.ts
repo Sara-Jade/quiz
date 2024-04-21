@@ -1,37 +1,49 @@
 import { ApiService } from "./api.service";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { FormsModule } from '@angular/forms';
 import { MatCardModule } from "@angular/material/card";
 import { MatListModule } from "@angular/material/list";
+import { MatRadioModule } from '@angular/material/radio';
 import { NgFor } from "@angular/common";
-import { QuestionComponent } from "./question.component";
+import { Question } from "./question";
 
+// interface Question {
+//     id: number;
+//     text: string;
+//     correctAnswer: string;
+//     wrongAnswers: string[];
+// }
 
 @Component({
     selector: 'questionSet',
     standalone: true,
-    imports: [MatCardModule, MatListModule, NgFor],
+    imports: [FormsModule, MatCardModule, MatListModule, MatRadioModule, NgFor],
     templateUrl: './questionSet.component.html',
     providers: [ApiService]
 })
 
-export class QuestionSetComponent { 
-    question = { 
-        Text: '', 
-        CorrectAnswer: '',
-        WrongAnswers: ['', '', '']}
-
-    questions: Array<any> = [];
+export class QuestionSetComponent implements OnInit{ 
+    selectedQuestion: Question = {} as Question;
+    questions: Array<Question> = [];
     
-    constructor(private apiService: ApiService) { }
+    constructor(public api: ApiService) { }
+
 
     ngOnInit() {
-        console.log('QuestionSetComponent initialized');
-        this.apiService.getQuestionSet()
-            .subscribe((response: any) => { this.questions = [...response]; });
+        // (await this.apiService.getQuestionSet())
+        this.api.getQuestionSet()
+            .subscribe((response: any) => { 
+                this.questions = [...response];
+                console.log(`questions length:`);
+                console.log(this.questions.length);
+                console.log(`questions[0].text: ${this.questions[0].text}`);
+            });
+
+        this.api.selectedQuestion1.subscribe(question => { this.selectedQuestion = question });
     }
 
-    post(question: any): void { 
-        this.apiService.postQuestion(question);
-        console.log(`Question: ${question.Text}`);
+    onOptionChange(event: any) {
+        console.log(`event.value: ${event.value}`);
+        this.api.selectQuestion(event.value);
     }
 }
