@@ -9,10 +9,17 @@ namespace quiz_backend.Controllers
     [ApiController]
     public class QuizzesController : ControllerBase
     {
+        readonly QuizContext context;
+        public QuizzesController(QuizContext context) 
+        { 
+            this.context = context;
+        }
+
         // POST api/<QuizzesController>
         [HttpPost]
         public IActionResult Post([FromBody] Quiz quiz)
         {
+            context.Add(quiz);
             return Ok(quiz);
         }
 
