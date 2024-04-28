@@ -6,6 +6,8 @@
         public string Text { get; set; }
         public string CorrectAnswer { get; set; }
         public string[] WrongAnswers { get; set; }
+        public int QuizId { get; set; }
+
         public Question(string text, string correctAnswer, string[] wrongAnswers)
         {
             Text = text;
