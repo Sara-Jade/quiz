@@ -14,6 +14,28 @@ namespace quiz_backend.Controllers
             this.context = context;
         }
 
+        /// <summary>
+        /// Gets all the questions in the database.
+        /// </summary>
+        /// <returns>A DbSet<Question></returns>
+        [HttpGet]
+        public IEnumerable<Question> Get()
+        {
+            return context.Questions;
+        }
+
+        /// <summary>
+        /// Get the questions associated with the quizId parameter
+        /// </summary>
+        /// <param name="quizId">The quizId for which to get questions</param>
+        /// <returns>An IEnumerable of questions associated with the quizId param</returns>
+        [HttpGet("{quizId}")]
+        public IEnumerable<Question> Get([FromRoute] int quizId)
+        {
+            var questions = context.Questions.Where(q => q.QuizId == quizId);
+            return questions;
+        }
+
         [HttpPost]
         public async Task<OkObjectResult> Post([FromBody]Question question)
         {
@@ -30,12 +52,6 @@ namespace quiz_backend.Controllers
             context.Entry(question).State = EntityState.Modified;
             await context.SaveChangesAsync();
             return Ok(question);
-        }
-
-        [HttpGet]
-        public IEnumerable<Question> Get()
-        {
-            return context.Questions;
         }
     }
 }
