@@ -37,8 +37,13 @@ namespace quiz_backend.Controllers
         }
 
         [HttpPost]
-        public async Task<OkObjectResult> Post([FromBody]Question question)
+        public async Task<IActionResult> Post([FromBody]Question question)
         {
+            if (context.Quizzes == null || context.Quizzes.Count() == 0) 
+            { 
+                return BadRequest("Must have a quiz before adding quizzes."); 
+            }
+
             context.Questions.Add(question);
             await context.SaveChangesAsync();
             return Ok(question);
