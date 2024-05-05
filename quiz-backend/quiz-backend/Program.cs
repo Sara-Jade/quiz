@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using quiz_backend;
 
@@ -14,7 +15,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddDbContext<QuizContext>(opt => opt.UseInMemoryDatabase("quiz"));
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserDbContext>();
+builder.Services.AddDbContext<UserDbContext>(opt => opt.UseInMemoryDatabase("user"));
 
 var app = builder.Build();
 
