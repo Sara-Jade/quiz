@@ -35,7 +35,10 @@ namespace quiz_backend.Controllers
             await signInManager.SignInAsync(user, isPersistent: false);
 
             var jwt = new JwtSecurityToken();
-            return Ok(new JwtSecurityTokenHandler().WriteToken(jwt));
+            string jwtWritten = new JwtSecurityTokenHandler().WriteToken(jwt);
+            var kvp = new KeyValuePair<string, string>("token", jwtWritten);
+
+            return Ok(kvp);
         }
     }
 }
