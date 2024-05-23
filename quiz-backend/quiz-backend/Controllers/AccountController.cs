@@ -26,7 +26,7 @@ namespace quiz_backend.Controllers
 
         // POST api/<AccountController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Credentials credentials)
+        public async Task<IActionResult> Register([FromBody] Credentials credentials)
         {
             var user = new IdentityUser { UserName = credentials.Email, Email = credentials.Email };
             var userResult = await userManager.CreateAsync(user, credentials.Password);
