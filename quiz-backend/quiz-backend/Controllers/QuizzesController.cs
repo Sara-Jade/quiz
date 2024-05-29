@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using quiz_backend.Models;
 
@@ -23,6 +24,7 @@ namespace quiz_backend.Controllers
         }
 
         // POST api/<QuizzesController>
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Quiz quiz)
         {

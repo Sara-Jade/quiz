@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -33,8 +35,10 @@ namespace quiz_backend.Controllers
 
             if (!userResult.Succeeded) { return BadRequest(userResult.Errors); }
             await signInManager.SignInAsync(user, isPersistent: false);
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Super secret key. Don't use here if this were prod."));
+            var signingCredentials = new SigningCredentials(signingKey, SecurityAlgorithms.HmacSha256);
 
-            var jwt = new JwtSecurityToken();
+            var jwt = new JwtSecurityToken(signingCredentials: signingCredentials);
             string jwtWritten = new JwtSecurityTokenHandler().WriteToken(jwt);
             var kvp = new KeyValuePair<string, string>("token", jwtWritten);
 
