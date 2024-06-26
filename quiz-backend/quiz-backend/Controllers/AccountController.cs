@@ -32,9 +32,15 @@ namespace quiz_backend.Controllers
         public async Task<IActionResult> Login([FromBody] Credentials credentials)
         {
             SignInResult? result = await signInManager.PasswordSignInAsync(credentials.Email, credentials.Password, false, false);
-            if (!result.Succeeded) { return BadRequest(); }
+            if (!result.Succeeded) { return BadRequest("We don't have this user/password combo."); }
 
             IdentityUser? user = await userManager.FindByEmailAsync(credentials.Email);
+            if (user is null) 
+            { 
+                // Since we already used the email/password combo above successfully, we should never hit this code.
+                return StatusCode(500); 
+            }
+
             return Ok(CreateToken(user));
         }
 
